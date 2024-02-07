@@ -59321,13 +59321,15 @@ var Inputs;
     Inputs["UploadChunkSize"] = "upload-chunk-size";
     Inputs["EnableCrossOsArchive"] = "enableCrossOsArchive";
     Inputs["FailOnCacheMiss"] = "fail-on-cache-miss";
-    Inputs["LookupOnly"] = "lookup-only"; // Input for cache, restore action
+    Inputs["LookupOnly"] = "lookup-only";
+    Inputs["SaveAlways"] = "save-always"; // Input for cache action
 })(Inputs = exports.Inputs || (exports.Inputs = {}));
 var Outputs;
 (function (Outputs) {
     Outputs["CacheHit"] = "cache-hit";
     Outputs["CachePrimaryKey"] = "cache-primary-key";
-    Outputs["CacheMatchedKey"] = "cache-matched-key"; // Output from restore action
+    Outputs["CacheMatchedKey"] = "cache-matched-key";
+    Outputs["CacheActionSaveAlways"] = "cache-action-save-always"; // Output from cache action
 })(Outputs = exports.Outputs || (exports.Outputs = {}));
 var State;
 (function (State) {
@@ -59391,6 +59393,7 @@ const stateProvider_1 = __nccwpck_require__(1527);
 const utils = __importStar(__nccwpck_require__(6850));
 function restoreImpl(stateProvider) {
     return __awaiter(this, void 0, void 0, function* () {
+        core.setOutput(constants_1.Outputs.CacheActionSaveAlways, core.getInput(constants_1.Inputs.SaveAlways));
         try {
             if (!utils.isCacheFeatureAvailable()) {
                 core.setOutput(constants_1.Outputs.CacheHit, "false");
