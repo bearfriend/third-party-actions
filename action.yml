@@ -38,18 +38,6 @@ runs:
   main: 'dist/restore/index.js'
   post: 'dist/save/index.js'
   post-if: "github.event.inputs.save-always == 'true' || success()"
-  steps:
-    - name: print
-      env:
-          GITHUB_JSON: ${{ toJSON(github) }}
-          INPUTS_JSON: ${{ toJSON(inputs) }}
-          RUNNER_JSON: ${{ toJSON(runner) }}
-          VARS_JSON: ${{ toJSON(vars) }}
-        run: |
-          echo "${GITHUB_JSON}"
-          echo "${INPUTS_JSON}"
-          echo "${RUNNER_JSON}"
-          echo "${VARS_JSON}"
 branding:
   icon: 'archive'
   color: 'gray-dark'
