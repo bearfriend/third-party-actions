@@ -59406,14 +59406,12 @@ function restoreImpl(stateProvider) {
             }
             const primaryKey = core.getInput(constants_1.Inputs.Key, { required: true });
             stateProvider.setState(constants_1.State.CachePrimaryKey, primaryKey);
-            // generate restoreKeys
-            const restoreKeys = Array(Number(process.env.GITHUB_RUN_ATTEMPT) - 2)
+            // generate restoreKeys for previous run attempts
+            const attemptNum = Number(process.env.GITHUB_RUN_ATTEMPT);
+            const restoreKeys = Array(attemptNum - 1)
                 .fill(primaryKey.split("-").slice(0, -1).join("-"))
-                .map((key, idx) => `${key}-${idx + 2}`)
+                .map((key, idx) => `${key}-${idx + 1}`)
                 .reverse();
-            core.info(`run attempt keys: ${process.env.GITHUB_RUN_ATTEMPT}`);
-            core.info(`restore keys: ${JSON.stringify(restoreKeys)}`);
-            core.info(`restore keys: ${restoreKeys.join(", ")}`);
             const cachePaths = utils.getInputAsArray(constants_1.Inputs.Path, {
                 required: true
             });

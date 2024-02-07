@@ -34,14 +34,11 @@ export async function restoreImpl(
         stateProvider.setState(State.CachePrimaryKey, primaryKey);
 
         // generate restoreKeys for previous run attempts
-        let restoreKeys = [];
-        const attemptNum = process.env.GITHUB_RUN_ATTEMPT;
-        if (attemptNum > 1) {
-            restoreKeys = Array(Number(attemptNum) - 1)
-                .fill(primaryKey.split("-").slice(0, -1).join("-"))
-                .map((key, idx) => `${key}-${idx + 1}`)
-                .reverse();
-        }
+        const attemptNum = Number(process.env.GITHUB_RUN_ATTEMPT);
+        const restoreKeys = Array(attemptNum - 1)
+            .fill(primaryKey.split("-").slice(0, -1).join("-"))
+            .map((key, idx) => `${key}-${idx + 1}`)
+            .reverse();
 
         const cachePaths = utils.getInputAsArray(Inputs.Path, {
             required: true
