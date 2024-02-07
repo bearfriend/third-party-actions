@@ -35,12 +35,11 @@ outputs:
     description: 'A boolean value to indicate an exact match was found for the primary key'
   save-always:
     description: "Run the post step to save the cache even if another step before fails"
-    value: ${{ inputs.save-always }}
 runs:
   using: 'node20'
   main: 'dist/restore/index.js'
   post: 'dist/save/index.js'
-  post-if: "contains(toJSON(steps), 'd2l-test-data')"
+  post-if: "success() || steps.*.output.save-always"
 branding:
   icon: 'archive'
   color: 'gray-dark'
