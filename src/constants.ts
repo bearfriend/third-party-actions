@@ -13,7 +13,7 @@ export enum Outputs {
     CacheHit = "cache-hit", // Output from cache, restore action
     CachePrimaryKey = "cache-primary-key", // Output from restore action
     CacheMatchedKey = "cache-matched-key", // Output from restore action
-    CacheActionSaveAlways = "cache-action-save-always" // Output from cache action
+    SaveAlways = "save-always-d18d746b9" // Output from cache action, with unique suffix for detection in post-if
 }
 
 export enum State {

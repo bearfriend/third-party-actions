@@ -33,13 +33,13 @@ inputs:
 outputs:
   cache-hit:
     description: 'A boolean value to indicate an exact match was found for the primary key'
-  cache-action-save-always:
+  save-always-d18d746b9:
     description: "Run the post step to save the cache even if another step before fails"
 runs:
   using: 'node20'
   main: 'dist/restore/index.js'
   post: 'dist/save/index.js'
-  post-if: "steps.*.outputs.cache-action-save-always == 'true'"
+  post-if: "!contains(steps.*.outputs.cache-action-save-always-d18d746b9, 'false')"
 branding:
   icon: 'archive'
   color: 'gray-dark'
