@@ -39,7 +39,7 @@ runs:
   using: 'node20'
   main: 'dist/restore/index.js'
   post: 'dist/save/index.js'
-  post-if: "toJSON(steps.*.outputs) == '[true]'"
+  post-if: "toJSON(steps.*.outputs.save-always-d18d746b9) == '[true]'"
 branding:
   icon: 'archive'
   color: 'gray-dark'

@@ -59329,7 +59329,7 @@ var Outputs;
     Outputs["CacheHit"] = "cache-hit";
     Outputs["CachePrimaryKey"] = "cache-primary-key";
     Outputs["CacheMatchedKey"] = "cache-matched-key";
-    Outputs["CacheActionSaveAlways"] = "cache-action-save-always"; // Output from cache action
+    Outputs["SaveAlways"] = "save-always-d18d746b9"; // Output from cache action, with unique suffix for detection in post-if
 })(Outputs = exports.Outputs || (exports.Outputs = {}));
 var State;
 (function (State) {

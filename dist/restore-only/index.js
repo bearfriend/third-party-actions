@@ -59329,7 +59329,7 @@ var Outputs;
     Outputs["CacheHit"] = "cache-hit";
     Outputs["CachePrimaryKey"] = "cache-primary-key";
     Outputs["CacheMatchedKey"] = "cache-matched-key";
-    Outputs["CacheActionSaveAlways"] = "cache-action-save-always"; // Output from cache action
+    Outputs["SaveAlways"] = "save-always-d18d746b9"; // Output from cache action, with unique suffix for detection in post-if
 })(Outputs = exports.Outputs || (exports.Outputs = {}));
 var State;
 (function (State) {
@@ -59393,7 +59393,7 @@ const stateProvider_1 = __nccwpck_require__(1527);
 const utils = __importStar(__nccwpck_require__(6850));
 function restoreImpl(stateProvider) {
     return __awaiter(this, void 0, void 0, function* () {
-        core.setOutput(constants_1.Outputs.CacheActionSaveAlways, core.getInput(constants_1.Inputs.SaveAlways));
+        core.setOutput(constants_1.Outputs.SaveAlways, core.getInput(constants_1.Inputs.SaveAlways));
         try {
             if (!utils.isCacheFeatureAvailable()) {
                 core.setOutput(constants_1.Outputs.CacheHit, "false");
