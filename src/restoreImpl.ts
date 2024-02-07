@@ -33,7 +33,7 @@ export async function restoreImpl(
         const primaryKey = core.getInput(Inputs.Key, { required: true });
         stateProvider.setState(State.CachePrimaryKey, primaryKey);
 
-        // generate restoreKeys
+        // generate restoreKeys for previous run attempts
         const restoreKeys = Array(Number(process.env.GITHUB_RUN_ATTEMPT) - 2)
             .fill(primaryKey.split("-").slice(0, -1).join("-"))
             .map((key, idx) => `${key}-${idx + 2}`)
