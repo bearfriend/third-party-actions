@@ -35,7 +35,7 @@ outputs:
     description: 'A boolean value to indicate an exact match was found for the primary key'
   save-always:
     description: "Run the post step to save the cache even if another step before fails"
-    value: ${{ contains(toJSON(inputs), 'true') }}
+    value: true
 runs:
   using: 'node20'
   main: 'dist/restore/index.js'
