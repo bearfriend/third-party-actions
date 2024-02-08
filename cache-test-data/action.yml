@@ -6,6 +6,7 @@ runs:
   steps:
     - name: Generate Restore Keys
       id: generate-restore-keys
+      shell: bash
       run: |
         echo "primary-key=${{ github.run_id }}-${{ github.run_attempt }}" > ${GITHUB_OUTPUT}
         echo "previous-attempt-key=${{ github.run_id }}-$((${{ github.run_attempt }} - 1))" >> ${GITHUB_OUTPUT}
