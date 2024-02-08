@@ -1,0 +1,19 @@
+name: cache-test-data
+description: Set up Node and install dependencies  
+
+runs:
+  using: composite
+  steps:
+    - name: Generate Restore Keys
+        id: generate-restore-keys
+        run: |
+          echo "primary-key=${{ github.run_id }}-${{ github.run_attempt }}" > $GITHUB_OUTPUT
+          echo "previous-attempt-key=${{ github.run_id }}-$((${{ github.run_attempt }} - 1))" >> $GITHUB_OUTPUT
+    - name: Cache Test Data
+        uses: bearfriend/third-party-actions@cache-run-attempt
+        id: d2l-test-data
+        with:
+          path: .d2l-test
+          save-always: true
+          key: ${{ steps.generate-restore-keys.outputs.primary-key }}
+          restore-keys: ${{ steps.generate-restore-keys.outputs.primary-key }}
