@@ -17,4 +17,4 @@ runs:
         path: .d2l-test
         save-always: true
         key: ${{ steps.generate-restore-keys.outputs.primary-key }}
-        restore-keys: ${{ steps.generate-restore-keys.outputs.primary-key }}
+        restore-keys: ${{ steps.generate-restore-keys.outputs.previous-attempt-key }}
